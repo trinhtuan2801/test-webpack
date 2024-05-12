@@ -7,7 +7,7 @@ import './index.css';
 function App() {
   return (
     <div className='app'>
-      <h1>App vip</h1>
+      <h1>App</h1>
       <RedText />
       <Logo />
       <Duck />

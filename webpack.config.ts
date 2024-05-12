@@ -41,15 +41,17 @@ const config: Configuration = {
     ],
   },
   resolve: {
-    extensions: ['.tsx', '.ts', '.jsx', '.js'],
+    extensions: ['.tsx', '.ts', '.js'], // import priority if 2+ files match
     alias: {
       '@': path.resolve(__dirname, 'src'),
     },
   },
   plugins: [
+    // split css from js
     new MiniCssExtractPlugin({
       filename: 'static/css/[hash].css',
     }),
+    // copy files in public to dist
     new CopyPlugin({
       patterns: [
         {
@@ -61,6 +63,7 @@ const config: Configuration = {
         },
       ],
     }),
+    // auto generate script & link tag
     new HtmlWebpackPlugin({
       template: path.resolve(__dirname, 'public', 'index.html'),
       filename: 'index.html',
